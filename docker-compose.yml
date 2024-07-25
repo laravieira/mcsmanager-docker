@@ -3,7 +3,7 @@ services:
   app:
     image: node:20
     volumes:
-      - web-data:/app/web-data
+      - data:/app/web-data
     ports:
       - "23333:23333"
     restart: unless-stopped
@@ -17,4 +17,4 @@ services:
       context: .
       dockerfile: Dockerfile
 volumes:
-  web-data:
+  data:
