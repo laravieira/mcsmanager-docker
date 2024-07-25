@@ -1,8 +1,13 @@
+FROM node:20 as build
+WORKDIR /app
+RUN wget https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_linux_release.tar.gz
+RUN tar -zxf mcsmanager_linux_release.tar.gz
+
 FROM node:20
 WORKDIR /app
 
-RUN wget https://github.com/MCSManager/MCSManager/releases/latest/download/mcsmanager_linux_release.tar.gz
-RUN tar -zxf mcsmanager_linux_release.tar.gz
+COPY --from=base /app/start-web.sh ./
+COPY --from=base /app/web ./
 RUN chmod +x /app/start-web.sh
 
 EXPOSE 23333:23333
