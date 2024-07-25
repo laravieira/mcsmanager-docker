@@ -6,8 +6,8 @@ RUN tar -zxf mcsmanager_linux_release.tar.gz
 FROM node:20
 WORKDIR /app
 
-COPY --from=base /app/start-web.sh ./
-COPY --from=base /app/web ./
+COPY --from=build /app/start-web.sh ./
+COPY --from=build /app/web ./
 RUN chmod +x /app/start-web.sh
 
 EXPOSE 23333:23333
