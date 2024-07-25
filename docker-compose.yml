@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  app:
+    image: node:20
+    volumes:
+      - web-data:/web-data
+    ports:
+      - "23333:23333"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-v"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    build:
+      context: .
+      dockerfile: Dockerfile
+volumes:
+  web-data:
