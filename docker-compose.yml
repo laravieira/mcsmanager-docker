@@ -3,7 +3,7 @@ services:
   app:
     image: node:20
     volumes:
-      - 'data:/app/web-data'
+      - 'data:/app'
     ports:
       - '23333:23333'
     restart: unless-stopped
